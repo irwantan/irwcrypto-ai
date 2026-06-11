@@ -1,10 +1,22 @@
 import { Stack } from 'expo-router';
 import * as SplashScreen from 'expo-splash-screen';
+import { useState, useEffect } from 'react';
+import { View } from 'react-native';
+import AnimatedSplash from './components/AnimatedSplash';
+import '../global.css';
 
 SplashScreen.preventAutoHideAsync();
 
 export default function RootLayout() {
-  SplashScreen.hideAsync();
+  const [showSplash, setShowSplash] = useState(true);
+
+  useEffect(() => {
+    SplashScreen.hideAsync();
+  }, []);
+
+  if (showSplash) {
+    return <AnimatedSplash onFinish={() => setShowSplash(false)} />;
+  }
 
   return (
     <Stack>

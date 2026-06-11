@@ -1,0 +1,188 @@
+╔═══════════════════════════════════════════════════════════════╗
+║                                                               ║
+║              📦 BUILD APK - LANGKAH DEMI LANGKAH 📦          ║
+║                                                               ║
+╚═══════════════════════════════════════════════════════════════╝
+
+✅ STEP 1: EAS CLI Installed! ✓
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+📝 STEP 2: LOGIN KE EXPO
+
+Ada 2 Cara:
+
+┌─────────────────────────────────────────────────────────────┐
+│ A. Sudah Punya Akun Expo                                    │
+└─────────────────────────────────────────────────────────────┘
+
+Di terminal, run:
+  eas login
+
+Masukkan:
+  - Username atau email
+  - Password
+
+┌─────────────────────────────────────────────────────────────┐
+│ B. Belum Punya Akun Expo (GRATIS!)                          │
+└─────────────────────────────────────────────────────────────┘
+
+1. Buka browser: https://expo.dev/signup
+
+2. Buat akun (gratis):
+   - Email: irwan.bintangnetwork@gmail.com
+   - Username: (pilih username)
+   - Password: (buat password)
+
+3. Verify email (check inbox)
+
+4. Kembali ke terminal, run:
+   eas login
+   
+   Masukkan username & password yang baru dibuat
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+🔧 STEP 3: CONFIGURE PROJECT
+
+Setelah login berhasil, run:
+  eas build:configure
+
+Jawab pertanyaan:
+  - Platform: Android (pilih Android)
+  - Proceed: Yes
+
+File eas.json sudah ada, jadi ini akan update project ID.
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+🚀 STEP 4: BUILD APK!
+
+Run:
+  npm run build
+
+ATAU:
+  eas build --platform android --profile production
+
+Proses:
+  ✓ Upload project files
+  ✓ Install dependencies
+  ✓ Compile Android app
+  ✓ Generate APK
+
+Waktu: ~10-15 menit
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+📥 STEP 5: DOWNLOAD APK
+
+Setelah build selesai:
+
+1. Terminal akan show link ke expo.dev
+
+2. Buka link di browser
+   ATAU
+   Buka: https://expo.dev/accounts/[username]/builds
+
+3. Klik build terbaru
+
+4. Klik tombol "Download"
+
+5. Save APK file (sekitar 50-60 MB)
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+📱 STEP 6: INSTALL DI HP ANDROID
+
+1. Copy APK file ke HP Android
+   (via USB, email, cloud, WhatsApp, dll)
+
+2. Di HP, buka File Manager
+
+3. Tap file APK
+
+4. Jika muncul "Install from unknown sources":
+   - Tap "Settings"
+   - Enable "Allow from this source"
+   - Tap Back
+   - Tap "Install"
+
+5. Tunggu install selesai
+
+6. Tap "Open"
+
+7. ENJOY! 🎉
+   - Lihat animated splash screen
+   - Test mining features
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+✅ SUMMARY COMMANDS:
+
+# Step 1 (Already done!)
+npm install -g eas-cli ✓
+
+# Step 2
+eas login
+
+# Step 3
+eas build:configure
+
+# Step 4
+npm run build
+
+# Step 5 & 6
+Download APK → Install di HP
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+🎨 WHAT YOU'LL GET:
+
+✅ Professional APK file (~50-60 MB)
+✅ Icon: Gradient Bitcoin+AI (blue → purple → pink)
+✅ Animated splash: 3.5s smooth animations
+✅ Mining app: Full features
+✅ Ready to install & share!
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+💡 TIPS:
+
+- Expo account GRATIS selamanya
+- Build pertama butuh ~15 menit
+- Build selanjutnya lebih cepat (~10 menit)
+- APK bisa di-share ke siapa saja
+- Bisa di-upload ke Play Store
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+⚠️ TROUBLESHOOTING:
+
+Issue: "eas command not found"
+  → Close & reopen terminal
+  → Or run: npm install -g eas-cli
+
+Issue: Login failed
+  → Check username & password
+  → Check internet connection
+  → Try: eas whoami
+
+Issue: Build failed
+  → Check build logs di expo.dev
+  → Run: eas build --platform android --profile production
+
+Issue: Can't install APK
+  → Enable "Install from unknown sources"
+  → Settings → Security → Unknown Sources
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+📞 Support: irwan.bintangnetwork@gmail.com
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+🎊 READY TO BUILD!
+
+Next: Run "eas login" di terminal!
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━

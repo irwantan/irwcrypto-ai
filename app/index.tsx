@@ -1,5 +1,6 @@
 import { View, Text, ScrollView, Pressable } from 'react-native';
 import { useState, useEffect } from 'react';
+import { CONFIG } from './config';
 
 export default function HomeScreen() {
   const [miningActive, setMiningActive] = useState(false);
@@ -73,7 +74,7 @@ export default function HomeScreen() {
           <View className="bg-white rounded p-3 mb-3">
             <Text className="text-xs font-mono text-gray-600">
               API Host:{'\n'}
-              ws-4ljejcvn8v9wvmny.ap-southeast-1.maas.aliyuncs.com
+              {CONFIG.DASHSCOPE_API_HOST.replace('https://', '')}
             </Text>
           </View>
           <Text className="text-xs text-gray-500">
