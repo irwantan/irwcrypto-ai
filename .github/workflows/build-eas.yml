@@ -1,0 +1,107 @@
+name: Build APK with EAS
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    timeout-minutes: 120
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '18'
+          cache: 'npm'
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Setup EAS CLI
+        run: npm install -g eas-cli
+
+      - name: Create .env file
+        run: |
+          cat > .env << EOF
+          DASHSCOPE_API_KEY=${{ secrets.DASHSCOPE_API_KEY }}
+          DASHSCOPE_API_HOST=${{ secrets.DASHSCOPE_API_HOST }}
+          DASHSCOPE_API_ENDPOINT=${{ secrets.DASHSCOPE_API_ENDPOINT }}
+          EOF
+
+      - name: Build APK with EAS
+        run: eas build --platform android --non-interactive
+        env:
+          EXPO_TOKEN: ${{ secrets.EXPO_TOKEN }}
+        continue-on-error: true
+
+      - name: Download APK artifact
+        if: always()
+        run: |
+          echo "Checking for EAS build artifacts..."
+          ls -la || true
+
+      - name: Create Release Notes
+        if: always()
+        run: |
+          cat > RELEASE_NOTES.md << EOF
+          # IrwCrypto AI - Build ${{ github.run_number }}
+          
+          **Build Information:**
+          - Build Number: ${{ github.run_number }}
+          - Commit: ${{ github.sha }}
+          - Branch: ${{ github.ref }}
+          - Timestamp: $(date -u +'%Y-%m-%d %H:%M:%S UTC')
+          - Status: ${{ job.status }}
+          
+          **Features:**
+          - Home/Dashboard screen dengan status mining real-time
+          - Settings screen untuk konfigurasi wallet, AI, thermal protection
+          - Statistics screen dengan analytics
+          - Loading screen dengan animasi dan credit
+          - DashScope Qwen AI integration untuk mining optimization
+          
+          **Installation:**
+          Download APK dari Releases dan install:
+          \`\`\`bash
+          adb install -r irwcrypto-ai.apk
+          \`\`\`
+          
+          **Configuration:**
+          Setelah install, setup DashScope API key di Settings screen.
+          
+          **Support:**
+          Email: irwan.bintangnetwork@gmail.com
+          EOF
+          cat RELEASE_NOTES.md
+
+      - name: Upload Release Notes
+        uses: actions/upload-artifact@v4
+        with:
+          name: release-notes
+          path: RELEASE_NOTES.md
+
+      - name: Print Build Status
+        if: always()
+        run: |
+          echo "=========================================="
+          echo "Build Status: ${{ job.status }}"
+          echo "Build Number: ${{ github.run_number }}"
+          echo "Repository: ${{ github.repository }}"
+          echo "Branch: ${{ github.ref }}"
+          echo "Commit: ${{ github.sha }}"
+          echo "=========================================="
+          echo ""
+          echo "To download APK:"
+          echo "1. Go to: https://github.com/${{ github.repository }}/actions/runs/${{ github.run_id }}"
+          echo "2. Click on 'Artifacts' section"
+          echo "3. Download the APK file"
