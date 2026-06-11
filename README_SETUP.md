@@ -45,11 +45,7 @@ pnpm install
 
 ### 3. Setup Environment Variables
 
-Buat file `.env` di root directory:
-```bash
-DASHSCOPE_API_KEY=sk-ws-H.ILEYDR.6ejt.MEYCIQCcvlQ5ky89S7QroCpi3VnSnpvpuH1dAv7h9qjb5Vn4TAIhAI1UJl1NaDxdx3qFT6Cwls3mwlQkkPttOphJjzV527Aa
-DASHSCOPE_API_HOST=ws-4ljejcvn8v9wvmny.ap-southeast-1.maas.aliyuncs.com
-DASHSCOPE_API_ENDPOINT=https://ws-4ljejcvn8v9wvmny.ap-southeast-1.maas.aliyuncs.com/api/v1
+
 ```
 
 ### 4. Setup GitHub Secrets (untuk CI/CD)
