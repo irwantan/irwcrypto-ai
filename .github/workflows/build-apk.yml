@@ -2,39 +2,51 @@ name: Build Android APK
 
 on:
   push:
-    branches: [ main, master ]
+    branches: [main, master]
   workflow_dispatch:
+
+env:
+  NODE_OPTIONS: --max-old-space-size=4096
+  EXPO_PUBLIC_DASHSCOPE_API_KEY: ${{ secrets.DASHSCOPE_API_KEY || 'sk-ws-H.ILXEDR.eDbZ.MEYCIQCOa-6ST7faHeGZddFrDfCkBoN_mi7HPrmpI60qqjuJKQIhAN-odwbsxdOocFazq3FXbfyx2QoM8BkM6rpH0zZVwGdA' }}
 
 jobs:
   build:
     runs-on: ubuntu-latest
-    
+
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
-      
+
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: '18'
+          node-version: '20'
           cache: 'npm'
-      
+
       - name: Install dependencies
         run: npm ci
-      
+
       - name: Setup Java
         uses: actions/setup-java@v4
         with:
           distribution: 'temurin'
           java-version: '17'
 
+      - name: Setup Android SDK
+        uses: android-actions/setup-android@v3
+
       - name: Make Gradle executable
         run: chmod +x android/gradlew
+
+      - name: Clean Gradle
+        run: |
+          cd android
+          ./gradlew clean --no-daemon
 
       - name: Build APK with Gradle
         run: |
           cd android
-          ./gradlew assembleRelease
+          ./gradlew assembleRelease --no-daemon --stacktrace
 
       - name: Upload APK Artifact
         uses: actions/upload-artifact@v4
