@@ -12,6 +12,7 @@
     "eject": "expo eject",
     "build": "eas build --platform android --profile production",
     "build:preview": "eas build --platform android --profile preview",
+    "build:android": "cd android && ./gradlew assembleRelease",
     "prebuild": "expo prebuild --platform android --clean"
   },
   "dependencies": {
