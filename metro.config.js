@@ -1,6 +1,6 @@
 const { getDefaultConfig } = require("expo/metro-config");
-const { withCSSInterop } = require("react-native-css-interop/metro");
+const { withNativeWind } = require("nativewind/metro");
 
 const config = getDefaultConfig(__dirname);
 
-module.exports = withCSSInterop(config);
+module.exports = withNativeWind(config, { input: "./global.css" });
