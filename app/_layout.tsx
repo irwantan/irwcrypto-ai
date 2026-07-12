@@ -1,7 +1,6 @@
 import { Stack } from 'expo-router';
 import * as SplashScreen from 'expo-splash-screen';
 import { useState, useEffect } from 'react';
-import { View } from 'react-native';
 import AnimatedSplash from './components/AnimatedSplash';
 import '../global.css';
 
@@ -21,6 +20,7 @@ export default function RootLayout() {
   return (
     <Stack>
       <Stack.Screen name="index" options={{ headerShown: false }} />
+      <Stack.Screen name="settings" options={{ title: 'Settings', headerShown: true }} />
     </Stack>
   );
 }

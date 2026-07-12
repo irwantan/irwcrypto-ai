@@ -1,9 +1,10 @@
-// Environment configuration
-// In React Native/Expo, we cannot use process.env directly
-// Instead, we use expo-constants or hardcode for production
+// Environment configuration — no hardcoded secrets
+// Users configure their own API key via the Settings screen
+// Stored securely in expo-secure-store
 
 export const CONFIG = {
-  DASHSCOPE_API_KEY: process.env.EXPO_PUBLIC_DASHSCOPE_API_KEY || "sk-ws-H.ILXEDR.eDbZ.MEYCIQCOa-6ST7faHeGZddFrDfCkBoN_mi7HPrmpI60qqjuJKQIhAN-odwbsxdOocFazq3FXbfyx2QoM8BkM6rpH0zZVwGdA",
-  DASHSCOPE_API_HOST: process.env.EXPO_PUBLIC_DASHSCOPE_API_HOST || "https://ws-4ljejcvn8v9wvmny.ap-southeast-1.maas.aliyuncs.com",
-  DASHSCOPE_API_ENDPOINT: process.env.EXPO_PUBLIC_DASHSCOPE_API_ENDPOINT || "https://ws-4ljejcvn8v9wvmny.ap-southeast-1.maas.aliyuncs.com/api/v1"
+  DASHSCOPE_API_KEY: "",  // User must set their own key via Settings
+  DASHSCOPE_API_HOST: "https://dashscope.aliyuncs.com",
+  DASHSCOPE_API_ENDPOINT: "https://dashscope.aliyuncs.com/api/v1",
+  DEFAULT_MODEL: "qwen-plus",
 };
